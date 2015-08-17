@@ -18,7 +18,6 @@ exports.generalTournaments = function (req, res) {
     var params = {singleEvents: 'true', orderBy:'startTime', timeMin:dateTime, key:process.env.GOOGLE_CALENDAR_KEY};
     var query = querystring.stringify(params);
     var url = util.format(baseUrl, calendarId, query);
-
     client.get('tournaments', function(err, reply) {
         if (reply) {
             res.send(JSON.parse(reply).items);
